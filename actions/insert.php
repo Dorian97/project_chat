@@ -38,7 +38,7 @@
 
 	if(isset($_POST['login']))
 	{
-		
+		echo "test";
 	}
 	
 ?>
