@@ -52,6 +52,7 @@
 
 <?php
 	echo "test"; 
+	echo "test2";
 ?>
 
 <script type="text/javascript">
