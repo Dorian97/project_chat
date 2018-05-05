@@ -50,6 +50,10 @@
 </body>
 </html>
 
+<?php
+	echo "test";
+?>
+
 <script type="text/javascript">
 
 	var elements_not_displayed = document.getElementById('ifYes');
@@ -73,5 +77,5 @@
 		document.getElementById("input_not_displayed3").required  = false;
 		document.getElementById("input_not_displayed4").required  = false;
 	}
-
+	
 </script>
