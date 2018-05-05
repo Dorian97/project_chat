@@ -53,6 +53,7 @@
 <?php
 	echo "test"; 
 	echo "test2";
+	echo "test3";
 ?>
 
 <script type="text/javascript">
