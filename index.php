@@ -51,7 +51,7 @@
 </html>
 
 <?php
-	echo "test";
+	echo "test"; 
 ?>
 
 <script type="text/javascript">
