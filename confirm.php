@@ -2,9 +2,9 @@
 	
 	include("./actions/db_connection.php");
 	
-	fucntion redirect()
+	function redirect()
 	{
-		header('Location:register.php');
+		header('Location:login.php');
 		exit();
 	}
 	
@@ -20,8 +20,13 @@
 		$sql   = $con->query("SELECT * FROM users WHERE email='$email' AND token='$token' AND isEmailConfirmed = 0");
 		if($sql->num_rows > 0)
 		{
-			$con->query("UPDATE users SET isEmailConfirmed = 1 AND token = ''");
+			$con->query("UPDATE users SET isEmailConfirmed = 1 , token = '' WHERE email = '$email'");
+			echo "Your email has been verified! Please log in!";
 			redirect();
-		} 
+		}
+		else
+		{
+			redirect();
+		}
 	}
 ?>

@@ -21,7 +21,7 @@
 			$sql1 = $con->query("SELECT * FROM users WHERE email='".$email."'");
 			if($sql1->num_rows > 0)
 			{
-				$msq = "There is an user already registered with this email...";
+				$msg = "There is an user already registered with this email...";
 			}
 			else
 			{
@@ -40,20 +40,18 @@
 				$mail->isHTML(true);
 				$mail->Body = "
 					Please click on the link below to verify your email<br><br>
-					<a href='http://localhost/PHPEmailConfirmation/confirm.php?email=$email&token=$token'>Click here!</a>
+					<a href='http://localhost/project/confirm.php?email=$email&token=$token'>Click here!</a>
 				";
 				
 				if($mail->send())
 				{
 					$msg_success = "You have been registered! Please verify your email!";
-// 					header("location: ../login.php");
-// 					exit;
 				}
 				
 				else
 				
 				{
-					$msg = "Something wrong happened!Please try again!";
+					$msg = "Something wrong happened! Please try again!";
 				}
 								
 				
