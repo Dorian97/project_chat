@@ -1,6 +1,9 @@
 <?php
 	
 	include("./actions/db_connection.php");
+	use PHPMailer\PHPMailer\PHPMailer;
+	include_once "PHPMailer/PHPMailer.php";
+
 
 	$msg = "";
 
@@ -15,8 +18,8 @@
 		
 		if($password == $confirm_password)
 		{
-			$sql = $con->query("SELECT id FROM users WHERE email='".$email."'");
-			if(sql->num_rows > 0)
+			$sql1 = $con->query("SELECT id FROM users WHERE email='".$email."'");
+			if($sql1->num_rows > 0)
 			{
 				$msq = "There is an user already registered with this email...";
 			}
@@ -30,13 +33,30 @@
 				
 				$sql  = "INSERT INTO `users`(`firstname` , `lastname` , `email` , `password` , `isEmailConfirmed` , `token`) VALUES ('$first_name' , '$last_name' , '$email' ,  '$hashedPassword' , '0' , '$token')";
 				$con->query($sql);
-				$msg = "You have been registered! Please verify your email!";
+				$mail = new PHPMailer();
+				$mail->setFrom('dorianivan.id@gmail.com');
+				$mail->addAddress($email, $first_name." ".$last_name);
+				$mail->Subject = "Please verify your email";
+				$mail->isHTML(true);
+				$mail->Body = "
+					Please click on the link below to verify your email<br><br>
+					<a href='http://localhost/PHPEmailConfirmation/confirm.php?email=$email&token=$token'>Click here!</a>
+				";
 				
-				use PHPMailer\PHPMailer\PHPMailer;
+				if($mail->send())
+				{
+					$msg_success = "You have been registered! Please verify your email!";
+// 					header("location: ../login.php");
+// 					exit;
+				}
 				
+				else
 				
-				header("location: ../login.php");
-				exit;
+				{
+					$msg = "Something wrong happened!Please try again!";
+				}
+								
+				
 			} 
 			
 				
@@ -67,6 +87,17 @@
 					  <div class='alert'>
 					  <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>&nbsp;&nbsp;
 					  <?=$msg;?>
+					  </div>
+					  <br>
+				<?php
+					}
+					
+					if(!empty($msg_success))
+					{
+				?>
+					  <div class='success'>
+					  <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>&nbsp;&nbsp;
+					  <?=$msg_success;?>
 					  </div>
 					  <br>
 				<?php

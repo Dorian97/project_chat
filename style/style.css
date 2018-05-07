@@ -109,3 +109,11 @@ span{
 .closebtn:hover {
     color: black;
 }
+div.success {
+	padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+}
