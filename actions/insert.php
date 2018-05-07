@@ -5,7 +5,6 @@
 	$first_name       = $_POST['first_name'];
 	$last_name        = $_POST['last_name'];
 	$email            = $_POST['email'];
-	$username         = $_POST['username'];
 	$password         = $_POST['password'];
 	$confirm_password = $_POST['confirm_password'];
 
@@ -13,7 +12,7 @@
 	{
 		if($password == $confirm_password)
 		{
-			$sql  = "INSERT INTO `users`(`firstname`, `lastname`, `email`, `username`, `password`) VALUES ('$first_name','$last_name','$email','$username','$password')";
+			$sql  = "INSERT INTO `users`(`firstname`, `lastname`, `email`, `password`) VALUES ('$first_name','$last_name','$email','$password')";
 
 			if(!mysqli_query($con,$sql))
 			{
