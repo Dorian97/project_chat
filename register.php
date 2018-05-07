@@ -18,7 +18,7 @@
 		
 		if($password == $confirm_password)
 		{
-			$sql1 = $con->query("SELECT id FROM users WHERE email='".$email."'");
+			$sql1 = $con->query("SELECT * FROM users WHERE email='".$email."'");
 			if($sql1->num_rows > 0)
 			{
 				$msq = "There is an user already registered with this email...";
