@@ -7,28 +7,21 @@
 	$email            = $_POST['email'];
 	$password         = $_POST['password'];
 	$confirm_password = $_POST['confirm_password'];
+	
+	$msg = "";
 
-	if(isset($_POST['signup']) && !empty($first_name) && !empty($last_name) && !empty($email) && !empty($email) && !empty($username) && !empty($password) && !empty($confirm_password))
+	if( isset($_POST['register']) )
 	{
 		if($password == $confirm_password)
 		{
 			$sql  = "INSERT INTO `users`(`firstname`, `lastname`, `email`, `password`) VALUES ('$first_name','$last_name','$email','$password')";
-
-			if(!mysqli_query($con,$sql))
-			{
-				echo "Not Inserted";
-			}
-			else
-			{
-				echo "Inserted";
-			}
-
-			header("location: ../index.php");
+			mysqli_query($con,$sql);
+			header("location: ../login.php");
 			exit;
 		}
 		else
 		{
-			echo "Passwords do not match each other!";
+			$msg = "Password and Confirmed Password are not the same...";
 		}
 	}else
 	{
@@ -39,6 +32,7 @@
 	{
 		echo "test";
 	}
+	
 	
 ?>
 	
