@@ -31,6 +31,10 @@
 				$sql  = "INSERT INTO `users`(`firstname` , `lastname` , `email` , `password` , `isEmailConfirmed` , `token`) VALUES ('$first_name' , '$last_name' , '$email' ,  '$hashedPassword' , '0' , '$token')";
 				$con->query($sql);
 				$msg = "You have been registered! Please verify your email!";
+				
+				use PHPMailer\PHPMailer\PHPMailer;
+				
+				
 				header("location: ../login.php");
 				exit;
 			} 
