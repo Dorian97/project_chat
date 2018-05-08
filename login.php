@@ -28,12 +28,12 @@
 				}
 				else
 				{
-					$msg = "Incorrect email or password!Please check your inputs and try again!";
+					$msg = "Incorrect email or password!";
 				}
 			}
 			else
 			{
-				$msg = "Incorrect email or password!Please check your inputs and try again!";
+				$msg = "Incorrect email or password!";
 			}
 		}
 	}

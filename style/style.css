@@ -96,6 +96,7 @@ span{
     background-color: #f44336;
     color: white;
     text-align: center;
+    text-align: -webkit-center;
 }
 .closebtn {
     margin-left: 15px;
