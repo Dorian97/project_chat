@@ -126,7 +126,11 @@
 					<div class="allignment">
 						<input type="submit" id="button_login" name="register" value="CREATE ACCOUNT"/>
 					</div>
-					
+					<div id="message-allign">
+						<p class="message">Already have an account?<a href="./login.php"> Click to Log in!</a></p>
+					</div>
+					<br>
+					<br>
 				</form>
 				<br>
 				<br>
