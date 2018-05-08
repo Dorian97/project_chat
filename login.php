@@ -8,7 +8,8 @@
 		if($email == "" || $password == "")
 		{
 			$msg = "Please check your inputs!";
-		}else
+		}
+		else
 		{
 			$sql = $con->query("SELECT email , password , isEmailConfirmed FROM users WHERE email='$email'");
 			if($sql->num_rows > 0)
@@ -22,8 +23,11 @@
 					}
 					else
 					{
-						$msg_success = "You have been logged in! You will be redirected in 2 sec!";
-						header( "refresh:2;url=index.php" );
+						$msg_success = "You have been logged in! You will be redirected in 1 sec!";
+						$sql = $con->query("SELECT token FROM users WHERE email='$email'");
+						$row = $sql->fetch_assoc();
+						$token = $row['token'];
+						header("refresh:1;url=index.php?id='$token'");
 					}
 				}
 				else

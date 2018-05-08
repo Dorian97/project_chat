@@ -20,13 +20,14 @@
 		$sql   = $con->query("SELECT * FROM users WHERE email='$email' AND token='$token' AND isEmailConfirmed = 0");
 		if($sql->num_rows > 0)
 		{
-			$con->query("UPDATE users SET isEmailConfirmed = 1 , token = '' WHERE email = '$email'");
+			$con->query("UPDATE users SET isEmailConfirmed = 1 WHERE email = '$email'");
 			echo "Your email has been verified! Please log in!";
-			redirect();
+			header( "refresh:1;url=login.php" );
 		}
 		else
 		{
-			redirect();
+			echo "We can not verify your email!Please try again!";
+			header( "refresh:1;url=login.php" );
 		}
 	}
 ?>

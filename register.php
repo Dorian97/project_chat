@@ -46,6 +46,7 @@
 				if($mail->send())
 				{
 					$msg_success = "You have been registered! Please verify your email!";
+					header( "refresh:2;url=login.php");
 				}
 				
 				else
