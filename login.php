@@ -18,18 +18,22 @@
 				{
 					if($data['isEmailConfirmed'] == 0)
 					{
-						$msg = "Please first confirm your email...";
+						$msg = "You have to confirm your email first!";
 					}
 					else
 					{
-						$msg_success = "You have been logged in! You will be redirected in 2 sec..!";
+						$msg_success = "You have been logged in! You will be redirected in 2 sec!";
 						header( "refresh:2;url=index.php" );
 					}
 				}
 				else
 				{
-					$msg = "Incorrect email or password...";
+					$msg = "Incorrect email or password!Please check your inputs and try again!";
 				}
+			}
+			else
+			{
+				$msg = "Incorrect email or password!Please check your inputs and try again!";
 			}
 		}
 	}

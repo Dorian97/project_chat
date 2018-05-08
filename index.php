@@ -1,3 +1,3 @@
 <?php
-	echo "Welcome user";
+	echo "Welcome user".$email;;
 ?>
