@@ -22,7 +22,8 @@
 					}
 					else
 					{
-						$msg_success = "You have been logged in";
+						$msg_success = "You have been logged in! You will be redirected in 2 sec..!";
+						header( "refresh:2;url=index.php" );
 					}
 				}
 				else
