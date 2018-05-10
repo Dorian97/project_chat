@@ -1,0 +1,34 @@
+.main-wrapper{
+	margin: 0 auto;
+	width: 1000px;
+}
+
+body{
+	background-color: #ccc;
+}
+
+a{
+	text-decoration: none;
+}
+
+header nav{
+	width:100%;
+	height:60px;
+	background-color: #fff;
+}
+
+header nav ul{
+	float: left;
+}
+
+header nav ul li{
+	float: left;
+	list-style: none;	
+}
+
+header nav ul li a{
+	font-family: Arial;
+	font-size: 16px;
+	color:#111;
+	line-height: 63px;
+} 

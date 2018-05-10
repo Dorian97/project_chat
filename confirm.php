@@ -2,15 +2,10 @@
 	
 	include("./actions/db_connection.php");
 	
-	function redirect()
+	if(!isset($_GET['email']) || !isset($_GET['token']))
 	{
 		header('Location:login.php');
 		exit();
-	}
-	
-	if(!isset($_GET['email']) || !isset($_GET['token']))
-	{
-		redirect();
 	}
 	else
 	{

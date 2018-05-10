@@ -1,41 +1,79 @@
 <?php
 	
 	include("./actions/db_connection.php");
-	
-	$token = $_GET['id'];
-	$token = substr($token, 1, -1);
-	
-	if(!empty($token))
+	if(isset($_POST['login']))
 	{
-		$sql = $con->query("SELECT firstname , lastname , email , isEmailConfirmed , register_date FROM users WHERE token='$token'");
-		if($sql->num_rows > 0)
+		$email            = $con->real_escape_string($_POST['email']);
+		$password         = $con->real_escape_string($_POST['password']);
+		
+		if($email == "" || $password == "")
 		{
-			$row = $sql->fetch_assoc();
-			if($row['isEmailConfirmed'] == '1')
-			{
-				session_start();
-				$_SESSION['name'] = $row['firstname']." ".$row['lastname'];
-				$username = $_SESSION['name'];
-				echo $username;
-			}
-			else
-			{
-				$msg = "Your email is not confirmed! You will be redirected to login page!";
-				echo $msg;
-				header( "refresh:2;url=login.php");
-			}
+			header("Location: ./layout/login.php?error=check_inputs");
+			exit();
+// 			$msg_error = "Please check your inputs!";
 		}
 		else
 		{
-			$msg = "There is a problem with you account... Please contact our technical team...";
-			echo $msg;
-			header( "Location:login.php");
+			$sql = $con->query("SELECT id, firstname, lastname, email , password , isEmailConfirmed ,isAdmin FROM users WHERE email='$email'");
+			if($sql->num_rows > 0)
+			{
+				$data = $sql->fetch_array();
+				if(password_verify($password, $data['password']))
+				{
+					if($data['isEmailConfirmed'] == 0)
+					{
+						header("Location: ./layout/login.php?error=email_not_confirmed");
+						exit();
+// 						$msg_error = "You have to confirm your email first!";
+					}
+					else
+					{	
+						echo "Login with success!";
+						echo("<br>");
+						session_start();
+						$_SESSION['name'] = $data['firstname']." ".$data['lastname'];
+						$_SESSION['id']   = $data['id'];
+					}
+				}
+				else
+				{
+					header("Location: ./layout/login.php?error=email_or_psd_inc");
+					exit();
+// 					$msg_error = "Incorrect email or password!";
+				}
+			}
+			else
+			{
+				header("Location: ./layout/login.php?error=email_or_psd_inc");
+				exit();
+// 				$msg_error = "Incorrect email or password!";
+			}
 		}
 	}
-	else
+	if(isset($_SESSION['name']))
 	{
-		$msg = "There is a problem with you account!Please contact our technical team!";
-		echo $msg;
-		header( "Location:login.php");
+		echo $_SESSION['name'];
 	}
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Chat with fun! :)</title>
+	<link rel="stylesheet" type="text/css" href="style/index.style.css"/>
+</head>
+<body>
+	<header>
+			<nav>
+				<div class="main-wrapper">
+					<ul>	
+						<li>
+							<a href="index.php">Home</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+	</header>
+</body>
+</html>
