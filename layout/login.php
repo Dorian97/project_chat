@@ -15,6 +15,21 @@
 		{
 			$msg_error = "Incorrect email or password!";
 		}
+		if($_GET['error'] == 'email_already_verified')
+		{
+			$msg_error = "Your email was already verified!";
+		}
+		if($_GET['error'] == 'fail')
+		{
+			$msg_error = "We can not verify your email! Please try again!";
+		}
+	}
+	if(isset($_GET['success']))
+	{
+		if($_GET['success'] == "email_verified")
+		{
+			$msg_success = "Your email has been verified! Please log in!";
+		}
 	}
 
 ?>
@@ -41,7 +56,18 @@
 					  <br>
 				<?php
 					}
+					if(!empty($msg_success))
+					{
 				?>
+					  <div class='success'>
+					  <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>&nbsp;&nbsp;
+					  <?=$msg_success;?>
+					  </div>
+					  <br>
+				<?php
+					}
+				?>
+
 				<div class="allignment">
 					<img src="./../images/user2.png" alt="user">
 				</div>
