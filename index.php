@@ -57,33 +57,8 @@
 	<link rel="stylesheet" type="text/css" href="style/index.style.css"/>
 </head>
 <body>
-	<header>
-			<nav>
-				<div class="main-wrapper">
-					<ul>	
-						<li>
-							<a href="index.php">Home</a>
-							
-						</li>
-					</ul>
-					<div class="nav-logout">
-							<?php
-								if(isset($_SESSION['user_id']))
-								{
-									echo '<form action="./functionality/logout.functionality.php" method="POST" accept-charset="utf-8">
-											<button type="submit" name="submit">Logout</button>
-										  </form>';
-								}
-								else
-								{
-									header("Location: ./layout/login.php");
-									exit();
-								}
-							?>
-							
-					</div>
-				</div>
-			</nav>
-	</header>
+	<?php
+		include("./layout/header.php");
+	?>
 </body>
 </html>
