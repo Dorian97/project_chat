@@ -1,5 +1,7 @@
 <?php
 	
+	session_start();
+	
 	include("./actions/db_connection.php");
 	if(isset($_POST['login']))
 	{
@@ -10,7 +12,6 @@
 		{
 			header("Location: ./layout/login.php?error=check_inputs");
 			exit();
-// 			$msg_error = "Please check your inputs!";
 		}
 		else
 		{
@@ -24,35 +25,27 @@
 					{
 						header("Location: ./layout/login.php?error=email_not_confirmed");
 						exit();
-// 						$msg_error = "You have to confirm your email first!";
 					}
 					else
 					{	
-						echo "Login with success!";
-						echo("<br>");
-						session_start();
-						$_SESSION['name'] = $data['firstname']." ".$data['lastname'];
-						$_SESSION['id']   = $data['id'];
+						$_SESSION['user_id']        = $data['id'];
+						$_SESSION['user_firstname'] = $data['firstname'];
+						$_SESSION['user_lastname']  = $data['lastname'];
+						$_SESSION['user_email']     = $data['email'];
 					}
 				}
 				else
 				{
 					header("Location: ./layout/login.php?error=email_or_psd_inc");
 					exit();
-// 					$msg_error = "Incorrect email or password!";
 				}
 			}
 			else
 			{
 				header("Location: ./layout/login.php?error=email_or_psd_inc");
 				exit();
-// 				$msg_error = "Incorrect email or password!";
 			}
 		}
-	}
-	if(isset($_SESSION['name']))
-	{
-		echo $_SESSION['name'];
 	}
 ?>
 
@@ -70,8 +63,25 @@
 					<ul>	
 						<li>
 							<a href="index.php">Home</a>
+							
 						</li>
 					</ul>
+					<div class="nav-logout">
+							<?php
+								if(isset($_SESSION['user_id']))
+								{
+									echo '<form action="./functionality/logout.functionality.php" method="POST" accept-charset="utf-8">
+											<button type="submit" name="submit">Logout</button>
+										  </form>';
+								}
+								else
+								{
+									header("Location: ./layout/login.php");
+									exit();
+								}
+							?>
+							
+					</div>
 				</div>
 			</nav>
 	</header>

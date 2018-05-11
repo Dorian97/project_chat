@@ -20,7 +20,6 @@
 			{
 				header("Location: ./layout/login.php?error=email_already_verified");
 				exit();
-// 				echo "Your email was already verified!";
 			}
 			else
 			{
@@ -29,19 +28,11 @@
 					$con->query("UPDATE users SET isEmailConfirmed = 1, token = '' WHERE email = '$email'");
 					header("Location: ./layout/login.php?success=email_verified");
 					exit();
-/*
-					echo "Your email has been verified! Please log in!";
-					header( "refresh:1;url=./layout/login.php" );
-*/
 				}
 				else
 				{
 					header("Location: ./layout/login.php?error=fail");
 					exit();
-/*
-					echo "We can not verify your email!Please try again!";
-					header( "refresh:1;url=./layout/login.php" );
-*/
 				}
 			}
 		}
@@ -49,7 +40,6 @@
 		{
 			header("Location: ./layout/login.php?error=fail");
 			exit();
-// 			echo "We can not verify your email!Please try again!";
 		}
 		
 		

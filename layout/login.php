@@ -1,4 +1,5 @@
 <?php
+	session_start(); 
 	$msg_error   = "";
 	$msg_success = "";
 	if(isset($_GET['error']))
@@ -31,7 +32,11 @@
 			$msg_success = "Your email has been verified! Please log in!";
 		}
 	}
-
+	if(isset($_SESSION['user_id']))
+	{
+		header("Location: ../index.php");
+		exit();
+	}
 ?>
 
 <!DOCTYPE html>
