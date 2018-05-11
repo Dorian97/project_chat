@@ -1,5 +1,6 @@
 <?php
 	session_start(); 
+	
 	$msg_error   = "";
 	$msg_success = "";
 	if(isset($_GET['error']))
@@ -91,6 +92,7 @@
 				<div id="message-allign">
 					<p class="message">Don't have an account yet?<a href="./register.php"> Create one!</a></p>
 				</div>
+				<br>
 				<br>
 				<br>
 			</div>

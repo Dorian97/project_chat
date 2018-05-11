@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	
 	$msg_error   = "";
 	$msg_success = "";
@@ -23,6 +24,12 @@
 		{
 			$msg_success = "You have been registered! Please verify your email!";
 		}
+	}
+	
+	if(isset($_SESSION['user_id']))
+	{
+		header("Location: ../index.php");
+		exit();
 	}
 	
 ?>
