@@ -1,7 +1,5 @@
 <?php
 	
-	session_start();
-	
 	include("./actions/db_connection.php");
 	if(isset($_POST['login']))
 	{

@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="http://localhost/project/style/header.style.css"/>
