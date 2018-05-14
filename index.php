@@ -59,7 +59,6 @@
 <body>
 	<?php
 		include("./layout/header.php");
-		echo "test";
 	?>
 	
 </body>
