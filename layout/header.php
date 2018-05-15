@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="http://localhost/project/style/header.style.css"/>
@@ -11,7 +14,10 @@
 					<a href="index.php">Home</a>
 				</li>
 				<li>
-					<a href="#">Friends</a>
+					<a href="#">Users Existing On the Platform</a>
+				</li>
+				<li>
+					<a href="#">Active Chats</a>
 				</li>
 				<li>
 					<a href="#">General Settings</a>

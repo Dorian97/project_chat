@@ -1,7 +1,5 @@
 <?php
 	
-	session_start();
-	
 	include("./actions/db_connection.php");
 	if(isset($_POST['login']))
 	{
@@ -60,5 +58,6 @@
 	<?php
 		include("./layout/header.php");
 	?>
+	
 </body>
 </html>
