@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	//echo "caca";
 ?>
 <head>
 	<meta charset="UTF-8">
